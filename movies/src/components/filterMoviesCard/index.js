@@ -51,8 +51,8 @@ const formControl =
   return (
     <Card 
       sx={{
-        maxWidth: 345,
-        backgroundColor: "rgb(204, 204, 0)"
+        maxWidth: 1000,
+        backgroundColor: "rgb(201, 201, 0)"
       }} 
       variant="outlined">
       <CardContent>
@@ -89,7 +89,7 @@ const formControl =
         </FormControl>
       </CardContent>
       <CardMedia
-        sx={{ height: 300 }}
+        sx={{ height: 300, width: 900 }}
         image={img}
         title="Filter"
       />

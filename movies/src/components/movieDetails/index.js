@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -9,6 +9,12 @@ import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
+import { useQuery } from "react-query";
+import { getSimilarMovie } from "../../api/tmdb-api";
+import Spinner from '../spinner';
+import Grid from "@mui/material/Grid";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 
 
 const root = {
@@ -21,17 +27,32 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie, children }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const { data , error, isLoading, isError } = useQuery(
+    ["similar", { id: movie.id }],
+    getSimilarMovie
+  );
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+  const results = data.results
 
   return (
     <>
+   
       <Typography variant="h5" component="h3">
         Overview
       </Typography>
 
       <Typography variant="h6" component="p">
-        {movie.overview}
+        {movie.overview}    
       </Typography>
 
       <Paper 
@@ -71,7 +92,30 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
             <Chip label={c.name} sx={{...chip}} />
           </li>
         ))}
+
+
+           
+      
+   
       </Paper>
+      <div>&nbsp;</div>
+      <Typography variant="h5" component="h3">
+        Similar Movies
+      </Typography>
+     
+<Paper>
+      <ImageList 
+                cols={1}>
+                {results.map((results) => (
+                    <ImageListItem key={results.poster_path} cols={1}>
+                    <img
+                        src={`https://image.tmdb.org/t/p/w500/${results.poster_path}`}
+                        alt={results.poster_path}
+                    />
+                    </ImageListItem>
+                ))}
+            </ImageList>
+</Paper>
       <Fab
         color="secondary"
         variant="extended"
@@ -88,7 +132,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
-      </>
+      </>  
   );
 };
 export default MovieDetails ;
