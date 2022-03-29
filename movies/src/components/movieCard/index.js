@@ -15,11 +15,11 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { MoviesContext } from "../../contexts/moviesContext";
-import PlaylistIcon from '@mui/icons-material/PlaylistAdd';
 
 
-export default function MovieCard({ movie, action }) { //note the change in this line
-  const { favorites, addToFavorites, addToPlaylist } = useContext(MoviesContext);
+
+export default function MovieCard({ movie, action }) {
+  const { favorites, addToFavorites } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
@@ -30,11 +30,6 @@ export default function MovieCard({ movie, action }) { //note the change in this
   const handleAddToFavorite = (e) => {
     e.preventDefault();
     addToFavorites(movie);
-  };
-
-  const handleAddToPlaylist = (e) => {
-    e.preventDefault();
-    addToPlaylist(movie);
   };
 
   return (
@@ -84,7 +79,17 @@ export default function MovieCard({ movie, action }) { //note the change in this
             More Info ...
           </Button>
         </Link>
+        
       </CardActions>
+
+     
+        <Link to={`/similar/${movie.id}`}>
+          <Button variant="outlined" size="medium" color="primary">
+            Similar Movies ...
+          </Button>
+        </Link>
+        
+    
     </Card>
   );
 }

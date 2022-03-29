@@ -13,28 +13,16 @@ const MoviesContextProvider = (props) => {
     setFavorites(newFavorites)
   };
 
-  // We will use this function in a later section
   const removeFromFavorites = (movie) => {
     setFavorites( favorites.filter(
       (mId) => mId !== movie.id
     ) )
   };
 
-  const addToPlaylist = (movie) => {
-    let newPLaylist = [];
-    if (!playlist.includes(movie.id)){
-         newPLaylist = [...playlist, movie.id];
-    }
-    setPlaylist(newPLaylist)
-  };
-
-
   return (
     <MoviesContext.Provider
       value={{
         favorites,
-        playlist,
-        addToPlaylist,
         addToFavorites,
         removeFromFavorites
       }}

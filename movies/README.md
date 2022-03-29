@@ -9,8 +9,8 @@ Name: Emma Roche (20088680)
 ### Features.
 [ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
 
-+ Feature 1
-+ Feature 2
++ You can now see the Cast pictures and names under the more info section of the movies.
++ There is now a 'Similar movies' clickable option where it goves pictures and names of movies that are similar to the movie clicked on
 + Feature 3
 + etc
 + etc
@@ -32,7 +32,7 @@ e.g.
 
 [ List the __new routes__ supported by your app and state the associated page.]
 
-+ /blogs - displays all published blogs.
++ /similar/:id - displays all similar movies.
 + /blogs/:id - displays a particular blog.
 + /blogs/:id/comments - detail view of a particular blog and its comments.
 + etc.
