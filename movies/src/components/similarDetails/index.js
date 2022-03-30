@@ -26,12 +26,13 @@ const SimilarDetails = ({ movie }) => {
   return (
     <>
   <div>&nbsp;</div>
+
 <Typography variant="h3" component="h3">
         Similar movies
       </Typography>
 
       <div>&nbsp;</div>
-            <ImageList sx={{ width: 1530, height: 1000 }} cols={5}> 
+            <ImageList sx={{ width: 'auto', height: 'auto' }} cols={5}> 
                 
                 {similar.map((results) => (
                     <ImageListItem key={results.poster_path

@@ -32,8 +32,8 @@ e.g.
 
 [ List the __new routes__ supported by your app and state the associated page.]
 
-+ /similar/:id - displays all similar movies.
-+ /blogs/:id - displays a particular blog.
++ /similar/:id - displays all similar movies to the movie that you click on
++ /movie/now_playing - displays the now playing movies in a 'Now playing' navigation tab option
 + /blogs/:id/comments - detail view of a particular blog and its comments.
 + etc.
 

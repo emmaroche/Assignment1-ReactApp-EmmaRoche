@@ -37,4 +37,5 @@ const MoviePage = (props) => {
   );
 };
 
+
 export default MoviePage;

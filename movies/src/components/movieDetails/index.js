@@ -94,8 +94,10 @@ const MovieDetails = ({ movie, children }) => {  // Don't miss this!
             <Chip label={c.name} sx={{...chip}} />
           </li>
         ))}
-   
+  
       </Paper>
+
+ 
       <div>&nbsp;</div>
 
       <Typography variant="h5" component="h3">
@@ -104,7 +106,7 @@ const MovieDetails = ({ movie, children }) => {  // Don't miss this!
      
 <Paper>
 
-<ImageList sx={{ width: 1110, height: 1000 }} cols={5} >
+<ImageList sx={{ width: 'auto', height: 'auto' }} cols={5} >
                 
                 {credits.map((cast) => (
                     <ImageListItem key={cast.profile_path}>
