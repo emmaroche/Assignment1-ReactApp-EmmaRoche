@@ -25,13 +25,8 @@ const SimilarPage = (props) => {
   return (
     <>
     
-
-        
             <SimilarDetails movie={movie} />
          
-      
-
-  
     </>
   );
 };

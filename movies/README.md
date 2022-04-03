@@ -24,9 +24,9 @@ Name: Emma Roche (20088680)
 [ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.] 
 
 e.g.
-+ Discover list of movies - discover/movie
-+ Movie details - movie/:id
-+ Movie genres = /genre/movie/list
++ Discover list of now playing movies - path: movie/now_playing endpoint: `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
++ See the cast of each movie you click on - path: /movie/{movie_id}/credits endpoint: 'https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US'
++ See the similar movies of each movie you click on - path: /similar/:id endpoint: `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
 
 ## Routing.
 
@@ -34,8 +34,7 @@ e.g.
 
 + /similar/:id - displays all similar movies to the movie that you click on
 + /movie/now_playing - displays the now playing movies in a 'Now playing' navigation tab option
-+ /blogs/:id/comments - detail view of a particular blog and its comments.
-+ etc.
++ /movie/{movie_id}/credits- displays cast for each movie you click on
 
 [If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
