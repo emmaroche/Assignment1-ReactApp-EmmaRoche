@@ -7,24 +7,33 @@ import Spinner from '../spinner'
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Typography from "@mui/material/Typography";
 
-const PersonDetails = ({ movie }) => {
-const { data , error, isLoading, isError } = useQuery(
-    ["person", { id: movie.id }],
-    getPersonMovie
-  );
+const PersonDetails = ({ person }) => {
+// const { data , error, isLoading, isError } = useQuery(
+//     ["person", { id: movie.id }],
+//     getPersonMovie
+//   );
 
-  if (isLoading) {
-    return <Spinner />;
-  }
+//   if (isLoading) {
+//     return <Spinner />;
+//   }
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
-  }
-  const person = data.person
+//   if (isError) {
+//     return <h1>{error.message}</h1>;
+//   }
+//   const person = data.person
 
   return (
     <>
-  <div>&nbsp;</div>
+
+<Typography variant="h5" component="h3">
+        Overview
+      </Typography>
+
+      <Typography variant="h6" component="p">
+        {person.name}    
+      </Typography>
+
+  {/* <div>&nbsp;</div>
 
 <Typography variant="h3" component="h3">
         People
@@ -47,7 +56,7 @@ const { data , error, isLoading, isError } = useQuery(
                     </ImageListItem>
 
                 ))}
-            </ImageList>
+            </ImageList> */}
 
     </>
   );
