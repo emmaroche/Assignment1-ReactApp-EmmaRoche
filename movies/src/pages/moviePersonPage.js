@@ -14,7 +14,10 @@ const PersonPage = (props) => {
   const { data: person, error, isLoading, isError } = useQuery(
     ["person", { id: id }],
     getPersonMovie
+    
   );
+
+  console.log(person)
 
   if (isLoading) {
     return <Spinner />;

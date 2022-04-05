@@ -1,14 +1,13 @@
 import React from "react";
-import MovieHeader from "../headerMovie";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { getPersonImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
-
-const TemplatePersonPage = ({ person, children }) => {
-
+import Typography from "@mui/material/Typography";
+const TemplatePersonPage = ({ person }) => {
+console.log(person.id)
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: person.id }],
     getPersonImages
@@ -25,6 +24,13 @@ const TemplatePersonPage = ({ person, children }) => {
 
   return (
     <>
+<Typography variant="h5" component="h3">
+        People
+      </Typography>
+
+      <Typography variant="h6" component="p">
+        {person.name}    
+      </Typography>
 
       <Grid container spacing={5} sx={{ padding: "15px" }}>
         <Grid item xs={3}>
@@ -47,9 +53,7 @@ const TemplatePersonPage = ({ person, children }) => {
           </div>
         </Grid>
 
-        <Grid item xs={9}>
-          {children}
-        </Grid>
+      
       </Grid>
     </>
   );

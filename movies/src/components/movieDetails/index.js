@@ -105,12 +105,13 @@ const MovieDetails = ({ movie, children }) => {  // Don't miss this!
       </Typography>
      
 <Paper>
-<Link to={`/person/${movie.id}`}>
+
+
          
-        
 <ImageList sx={{ width: 'auto', height: 'auto' }} cols={5} >
                 
                 {credits.map((cast) => (
+                  <Link to={`/person/${cast.id}`}>
                     <ImageListItem key={cast.profile_path}>
                     <img
                         src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
@@ -121,9 +122,10 @@ const MovieDetails = ({ movie, children }) => {  // Don't miss this!
             title={cast.character}
             subtitle={<span>Played by {cast.name}</span>}/>
                     </ImageListItem>
-                ))}
+                    </Link>))}
             </ImageList>
-            </Link>
+            
+           
 </Paper>
 
       <Fab
