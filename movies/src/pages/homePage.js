@@ -5,7 +5,6 @@ import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 
-
 const HomePage = (props) => {
 
   const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
@@ -25,6 +24,7 @@ const HomePage = (props) => {
   const addToFavorites = (movieId) => true 
 
    return (
+     
       <PageTemplate
         title="Discover Movies"
         movies={movies}
@@ -32,6 +32,8 @@ const HomePage = (props) => {
           return <AddToFavoritesIcon movie={movie} />
         }}
       />
+
+      
   );
 };
 

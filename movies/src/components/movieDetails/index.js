@@ -17,7 +17,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 
 
-
+import { Link } from "react-router-dom";
 const root = {
     display: "flex",
     justifyContent: "center",
@@ -105,7 +105,9 @@ const MovieDetails = ({ movie, children }) => {  // Don't miss this!
       </Typography>
      
 <Paper>
-
+<Link to={`/person/${movie.id}`}>
+         
+        
 <ImageList sx={{ width: 'auto', height: 'auto' }} cols={5} >
                 
                 {credits.map((cast) => (
@@ -121,7 +123,7 @@ const MovieDetails = ({ movie, children }) => {  // Don't miss this!
                     </ImageListItem>
                 ))}
             </ImageList>
-
+            </Link>
 </Paper>
 
       <Fab

@@ -11,7 +11,7 @@ Name: Emma Roche (20088680)
 
 + You can now see the Cast pictures and names under the more info section of the movies.
 + There is now a 'Similar movies' clickable option where it goves pictures and names of movies that are similar to the movie clicked on
-+ Feature 3
++ There is a navigation option called now playing where you can see the now playing movies
 + etc
 + etc
 
