@@ -10,8 +10,13 @@ Name: Emma Roche (20088680)
 [ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
 
 + You can now see the Cast pictures and names under the more info section of the movies.
-+ There is now a 'Similar movies' clickable option where it goves pictures and names of movies that are similar to the movie clicked on
-+ There is a navigation option called now playing where you can see the now playing movies
+
++ When you click oin a cast member it will bring you to a page where it shows more pictures of the actor/actress and their biography.
+
++ There is now a 'Similar movies' clickable option where it goves pictures and names of movies that are similar to the movie clicked on.
+
++ There is a navigation option called 'Now Playing' where you can see the now playing movies.
+
 + etc
 + etc
 
@@ -25,16 +30,21 @@ Name: Emma Roche (20088680)
 
 e.g.
 + Discover list of now playing movies - path: movie/now_playing endpoint: `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
-+ See the cast of each movie you click on - path: /movie/{movie_id}/credits endpoint: 'https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US'
-+ See the similar movies of each movie you click on - path: /similar/:id endpoint: `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
+
++ See the cast members of each movie you click on - path: /movie/{movie_id}/credits endpoint: `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+
++ See the biography and pictures of the actor/actress you click on in the cast secrion  - paths: /person/{person_id} & 
+/person/{person_id}/images endpoints: `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}` & `https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}` 
+
++ See the similar movies for the movie you click on - path: /similar/:id endpoint: `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
 
 ## Routing.
 
 [ List the __new routes__ supported by your app and state the associated page.]
 
-+ /similar/:id - displays all similar movies to the movie that you click on
-+ /movie/now_playing - displays the now playing movies in a 'Now playing' navigation tab option
-+ /movie/{movie_id}/credits- displays cast for each movie you click on
++ /similar/:id - similarMoviesPage.js - Displays similar movies to the movie you click on
++ /movie/now_playing - NowPlayingMoviesPage.js - Displays Now PLaying movies
++ /person/:id - moviePersonPage.js - Displays biography and pictures of cast memebers you click on
 
 [If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 

@@ -34,8 +34,8 @@ const TemplateMoviePage = ({ movie, children }) => {
             flexWrap: "wrap",
             justifyContent: "space-around",
           }}>
-            <ImageList 
-                cols={1}>
+            <ImageList sx={{ height: 510 }} cols={2}>
+            
                 {images.map((image) => (
                     <ImageListItem key={image.file_path} cols={1}>
                     <img

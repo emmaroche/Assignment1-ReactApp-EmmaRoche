@@ -97,8 +97,6 @@ export const getSimilarMovie = ({ queryKey }) => {
    });
   };
 
-
-
   export const getCastMovie = ({ queryKey }) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
@@ -132,21 +130,6 @@ export const getSimilarMovie = ({ queryKey }) => {
       throw error
    });
   };
-
-  // export const getPersonMovie = (args) => {
-  //   const [, idPart] = args.queryKey;
-  //   const { id } = idPart;
-  //   return fetch(
-
-  //     `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       // console.log(json.results);
-  //       return json.results;
-  //     });
-  // };
-
 
   export const getMovieReviews = (id) => {
     return fetch(

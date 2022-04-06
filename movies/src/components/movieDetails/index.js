@@ -105,9 +105,7 @@ const MovieDetails = ({ movie, children }) => {  // Don't miss this!
       </Typography>
      
 <Paper>
-
-
-         
+  
 <ImageList sx={{ width: 'auto', height: 'auto' }} cols={5} >
                 
                 {credits.map((cast) => (

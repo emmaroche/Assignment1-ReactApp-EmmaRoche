@@ -6,6 +6,16 @@ import { getPersonImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+const root = {
+  display: "flex",
+  justifyContent: "left",
+  flexWrap: "wrap",
+  listStyle: "none",
+  padding: 1.5,
+  
+};
+
 const TemplatePersonPage = ({ person }) => {
 console.log(person.id)
   const { data , error, isLoading, isError } = useQuery(
@@ -24,23 +34,38 @@ console.log(person.id)
 
   return (
     <>
-<Typography variant="h5" component="h3">
-        People
-      </Typography>
-
-      <Typography variant="h6" component="p">
-        {person.name}    
-      </Typography>
-
       <Grid container spacing={5} sx={{ padding: "15px" }}>
-        <Grid item xs={3}>
+        <Grid item xs={12}>
           <div sx={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-around",
           }}>
-            <ImageList 
-                cols={1}>
+
+<div>&nbsp;</div>
+<Typography variant="h2" component="h2">
+{person.name} 
+      </Typography>
+
+<Paper 
+        component="ul" 
+        sx={{...root}}
+      >
+      
+
+      <Typography variant="h4" component="h4">
+        Biography
+      </Typography>
+      <div>&nbsp;</div>
+      <div>&nbsp;</div>
+
+      <Typography variant="h6" component="p">
+        {person.biography}    
+      </Typography>
+      <div>&nbsp;</div>
+    
+      <ImageList sx={{  height: 450 }} cols={3} >
+             
                 {images.map((image) => (
                     <ImageListItem key={image.file_path} cols={1}>
                     <img
@@ -50,11 +75,16 @@ console.log(person.id)
                     </ImageListItem>
                 ))}
             </ImageList>
+          </Paper>
+
           </div>
+         
         </Grid>
 
       
       </Grid>
+
+     
     </>
   );
 };
