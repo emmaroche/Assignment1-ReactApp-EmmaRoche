@@ -7,6 +7,8 @@ import { useQuery } from "react-query";
 import Spinner from '../spinner'
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import MovieHeader from "../headerMovie";
+
 const root = {
   display: "flex",
   justifyContent: "left",
@@ -34,6 +36,8 @@ console.log(person.id)
 
   return (
     <>
+   
+
       <Grid container spacing={5} sx={{ padding: "15px" }}>
         <Grid item xs={12}>
           <div sx={{

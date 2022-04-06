@@ -1,4 +1,5 @@
 import { getGenres } from "../../api/tmdb-api";
+import { getTopRatedMovie } from "../../api/tmdb-api"; 
 import React from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -13,6 +14,12 @@ import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
+import TopRatedMoviePage from "../topRated";
 
 const formControl = 
   {
@@ -21,8 +28,9 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)"
   };
 
+  
   export default function FilterMoviesCard(props) {
-    const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+    const { data, error, isLoading, isError } = useQuery("genres", getGenres, "top_rated", getTopRatedMovie);
   
     if (isLoading) {
       return <Spinner />;
@@ -31,11 +39,15 @@ const formControl =
     if (isError) {
       return <h1>{error.message}</h1>;
     }
+
     const genres = data.genres;
     if (genres[0].name !== "All"){
       genres.unshift({ id: "0", name: "All" });
     }
   
+    const top_rated = data.results;
+   
+
     const handleChange = (e, type, value) => {
       e.preventDefault();
       props.onUserInput(type, value); // NEW
@@ -48,17 +60,22 @@ const formControl =
     const handleGenreChange = (e) => {
       handleChange(e, "genre", e.target.value);
     };
+
+    const handleTopChange = (e) => {
+      handleChange(e, "top_rated", e.target.value);
+    };
+
   return (
     <Card 
       sx={{
         maxWidth: 1000,
-        backgroundColor: "rgb(201, 201, 0)"
+        backgroundColor: "#1e88e5"
       }} 
       variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="large" />
-          Filter the movies.
+          {" "} Filter movies
         </Typography>
         <TextField
       sx={{...formControl}}
@@ -87,19 +104,23 @@ const formControl =
             })}
           </Select>
         </FormControl>
+
+         <FormControl sx={{...formControl}}>
+          <InputLabel id="toprated-label">Top Rated</InputLabel>
+          <Checkbox
+    labelId="toprated-label"
+    id="toprated-select"
+    defaultValue=""
+    value={props.topRatedFilter}
+    onChange={handleTopChange}
+  >
+
+<TopRatedMoviePage top_rated={top_rated} />
+           
+          </Checkbox>
+        </FormControl> 
       </CardContent>
-      <CardMedia
-        sx={{ height: 300, width: 900 }}
-        image={img}
-        title="Filter"
-      />
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
-      </CardContent>
+    
     </Card>
   );
 }

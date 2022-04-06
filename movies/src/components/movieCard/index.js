@@ -32,7 +32,9 @@ export default function MovieCard({ movie, action }) {
   };
 
   return (
+   
     <Card sx={{ maxWidth: 345 }}>
+ 
        <CardHeader
         avatar={
           movie.favorite ? (
@@ -41,12 +43,16 @@ export default function MovieCard({ movie, action }) {
             </Avatar>
           ) : null
         }
+        
         title={
           <Typography variant="h5" component="p">
             {movie.title}{" "}
           </Typography>
         }
       />
+
+
+<Link to={`/movies/${movie.id}`} style={{ textDecoration: 'none' }}>
       <CardMedia
         sx={{ height: 500 }}
         image={
@@ -55,41 +61,37 @@ export default function MovieCard({ movie, action }) {
             : img
         }
       />
+       </Link>
+
+       
       <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
+      
+          <Grid item xs={12}>
+            <Typography variant="h5" gutterBottom component="div">
               <CalendarIcon fontSize="small" />
               {movie.release_date}
             </Typography>
           </Grid>
+
           <Grid item xs={6}>
-            <Typography variant="h6" component="p">
+            <Typography variant="h5" gutterBottom component="div">
               <StarRateIcon fontSize="small" />
               {"  "} {movie.vote_average}{" "}
             </Typography>
           </Grid>
-        </Grid>
+        
       </CardContent>
       <CardActions disableSpacing>
         {action(movie)}
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            More Info ...
+         <Link to={`/similar/${movie.id}`} style={{ textDecoration: 'none' }}>
+          <Button variant="contained" size="small" color="primary">
+           Similar Movies
           </Button>
         </Link>
         
       </CardActions>
-
      
-        <Link to={`/similar/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            Similar Movies ...
-          </Button>
-        </Link>
-        
-      
-    
     </Card>
+    
   );
 }
